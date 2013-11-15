@@ -1,0 +1,22 @@
+IHU Challenge 
+- Due by Dec. 2nd
+
+Goal:
+To put all your skill and ability to learn into creating a 2 page website. The site will be simple, it is more about what you ultimately put into it.
+
+Minimum:
+. javascript web app, when loaded, shows 'Hello' in 26 pt font, centered on screen
+. when word is clicked, it goes to page 2 which shows 'Goodbye', in 26 pt font centered on screen
+. it uses a javascript framework IE: Backbone, Ember, Angular, Knockout, Meteor, Etc.
+. it is a single page app, so the 2 'pages' are just re-rendering the DOM in javascript
+
+Extra:
+. Yoeman boilerplate app
+. Grunt build processes
+. Bower install of javascript libraries like jquery
+. HTML templating, IE: handlebars
+. javascript tests
+. JSLint passes
+. proper use of Routes in framework to show 2 different pages
+. CSS precompiler, IE: stylus, less, sass
+  - extra credit grunt task to compile css

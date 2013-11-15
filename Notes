@@ -1,0 +1,16 @@
+Notes
+
+add git repo
+get sublime text 2, 
+get node.js, 
+- karma   npm install -g karma
+- bower   npm install -g bower
+- angular   bower install angular
+- jquery    bower install jquery
+- jade		bower install jade
+- grunt		npm install -g grunt-cli
+- yo		npm install -g yo
+			npm install -g generator-angular
+
+bower init
+yo angular
