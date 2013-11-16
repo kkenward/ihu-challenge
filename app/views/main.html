@@ -4,8 +4,11 @@
 
 <div class="jumbotron">
 	<div ng-controller="MainCtrl">
-		<p class="message" ng-model="greetingMessage" ng-click="setMessage()">{{greetingMessage}}</p>
+		<p class="message" title="Click Me!" ng-show="layout == 'welcome'" ng-click="layout = setMessage()">{{greetingMessage}}</p>
+		<p class="message" ng-show="layout == 'farewell'">{{greetingMessage}}</p>
 		<!-- <themessage></themessage> -->
+<!-- <a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"></a>
+<a class="grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'"></a> -->
 	</div>
 </div>
 
