@@ -4,9 +4,10 @@ angular.module('ihuChallengeApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
-])
-  .config(function ($routeProvider) {
+  'ngRoute',
+  'ihuChallengeApp.main',
+  ])
+  .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -15,4 +16,4 @@ angular.module('ihuChallengeApp', [
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }]);
