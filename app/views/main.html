@@ -3,17 +3,12 @@
 </div>
 
 <div class="jumbotron">
-	<div ng-controller="MainCtrl">
-		<p class="message" title="Click Me!" ng-show="layout == 'welcome'" ng-click="layout = setMessage()">{{greetingMessage}}</p>
-		<p class="message" ng-show="layout == 'farewell'">{{greetingMessage}}</p>
-		<!-- <themessage></themessage> -->
-<!-- <a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"></a>
-<a class="grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'"></a> -->
+	<div>		
+		<my-message title='{{data.clickme}}'></my-message>
 	</div>
 </div>
 
 <div class="row marketing">
-
 </div>
 
 <div class="footer">

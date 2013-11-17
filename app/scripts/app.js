@@ -9,11 +9,15 @@ angular.module('ihuChallengeApp', [
   ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/welcome', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/farewell', {
+        templateUrl: 'views/main.html',
+        controller: 'SecondaryCtrl'
+       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/welcome'
       });
   }]);
