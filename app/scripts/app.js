@@ -1,12 +1,9 @@
 'use strict';
 
 angular.module('ihuChallengeApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
   'ngRoute',
-  'ihuChallengeApp.main',
-  ])
+  'ihuChallengeApp.main'
+])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/welcome', {
@@ -16,7 +13,7 @@ angular.module('ihuChallengeApp', [
       .when('/farewell', {
         templateUrl: 'views/main.html',
         controller: 'SecondaryCtrl'
-       })
+      })
       .otherwise({
         redirectTo: '/welcome'
       });
