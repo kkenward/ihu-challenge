@@ -14,3 +14,6 @@ get node.js,
 
 bower init
 yo angular
+
+npm install jade
+npm install -g stylus
