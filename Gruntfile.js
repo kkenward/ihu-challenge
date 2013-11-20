@@ -28,7 +28,7 @@ module.exports = function (grunt) {
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['copy:styles', 'autoprefixer']
+        tasks: ['copy:styles', 'autoprefixer', 'stylus']
       },
       livereload: {
         options: {
@@ -132,11 +132,9 @@ module.exports = function (grunt) {
         }]
       }
     },
-    // not used since Uglify task does concat,
-    // but still available if needed
-    /*concat: {
-      dist: {}
-    },*/
+    concat: {
+      dist: '<%= yeoman.dist %>'
+    },
     rev: {
       dist: {
         files: {
@@ -186,14 +184,14 @@ module.exports = function (grunt) {
       // By default, your `index.html` <!-- Usemin Block --> will take care of
       // minification. This option is pre-configured if you do not wish to use
       // Usemin blocks.
-      // dist: {
-      //   files: {
-      //     '<%= yeoman.dist %>/styles/main.css': [
-      //       '.tmp/styles/{,*/}*.css',
-      //       '<%= yeoman.app %>/styles/{,*/}*.css'
-      //     ]
-      //   }
-      // }
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/styles/main.css': [
+            '.tmp/styles/{,*/}*.css',
+            '<%= yeoman.app %>/styles/{,*/}*.css'
+          ]
+        }
+      }
     },
     htmlmin: {
       dist: {
@@ -211,7 +209,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html'],
+          src: ['{,*/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -272,7 +270,7 @@ module.exports = function (grunt) {
     },
     cdnify: {
       dist: {
-        html: ['<%= yeoman.dist %>/*.html']
+        html: ['<%= yeoman.dist %>/{,*/}*.html']
       }
     },
     ngmin: {
@@ -288,12 +286,33 @@ module.exports = function (grunt) {
     uglify: {
       dist: {
         files: {
-          '<%= yeoman.dist %>/scripts/scripts.js': [
-            '<%= yeoman.dist %>/scripts/scripts.js'
+          '<%= yeoman.dist %>/scripts/*.js': [
+            '<%= yeoman.dist %>/scripts/*.js'
           ]
         }
       }
-    }
+    },
+    stylus: {
+      compile: {
+        files: {
+          '<%= yeoman.app %>/styles/app.css': '<%= yeoman.app %>/styles/app.styl', // 1:1 compile
+          '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/main.styl'
+        }
+      }
+    },
+/*    jade: {
+      compile: {
+        options: {
+          data: {
+            debug: false
+          }
+        },
+        files: {
+          '<%= yeoman.app %>/index.html': '<%= yeoman.app %>/index.jade',
+          '<%= yeoman.app %>/views/main.html': '<%= yeoman.app %>/views/main.jade'
+        }
+      }
+    }*/
   });
 
   grunt.registerTask('server', function (target) {
@@ -320,10 +339,13 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    //'jade',
+    'stylus',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
-    'concat',
+    // not used since Uglify task does concat, but still available if needed
+    //'concat',
     'ngmin',
     'copy:dist',
     'cdnify',

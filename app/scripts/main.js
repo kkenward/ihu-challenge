@@ -2,10 +2,10 @@
 
 angular.module('ihuChallengeApp.main', [])
   .controller('MainCtrl', function($scope) {
-    $scope.data = {clickme: 'Click Me!', greetingMessage: 'HELLO!'};
+    $scope.data = {clickme: 'Click Me!', greetingMessage: 'Hello!'};
   })
   .controller('SecondaryCtrl', function($scope) {
-    $scope.data = {clickme: '', greetingMessage: 'GOODBYE!'};
+    $scope.data = {clickme: '', greetingMessage: 'Goodbye!'};
   })
   .directive('myMessage', function () {
     return {

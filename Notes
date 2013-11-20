@@ -17,3 +17,5 @@ yo angular
 
 npm install jade
 npm install -g stylus
+npm install grunt-contrib-stylus --save-dev
+npm install grunt-contrib-jade

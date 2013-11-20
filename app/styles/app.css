@@ -4,4 +4,3 @@
 .menu > li{display:inline}
 .menu > li:before{content:"|";padding-right:.3em}
 .menu > li:nth-child(1):before{content:"";padding:0}
-
