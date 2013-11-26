@@ -19,12 +19,19 @@ module.exports = function(config) {
       'app/bower_components/angular-route/angular-route.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
-      //'test/mock/**/*.js',
+      'app/**/*.html',
+      'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
-    exclude: [],
+    exclude: [
+      'app/scripts/bootstrap.js'
+    ],
+
+    preprocessors: {
+      '**/*.html': 'html2js'
+    },
 
     // web server port
     port: 8080,
@@ -35,7 +42,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // Start these browsers, currently available:

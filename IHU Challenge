@@ -15,8 +15,8 @@ x. Yoeman boilerplate app
 x. Grunt build processes
 x. Bower install of javascript libraries like jquery
 x. HTML templating, IE: handlebars
-. javascript tests
-. JSLint passes
+x. javascript tests
+x. JSLint passes
 x. proper use of Routes in framework to show 2 different pages
 x. CSS precompiler, IE: stylus, less, sass
 x  - extra credit grunt task to compile css

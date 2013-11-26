@@ -15,7 +15,10 @@ module.exports = function (grunt) {
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
-      dist: 'dist'
+      dist: 'dist',
+      livereload: {
+        port: 35728
+      }
     },
     watch: {
       coffee: {
@@ -58,7 +61,7 @@ module.exports = function (grunt) {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
-        livereload: 35729
+        livereload: 35728
       },
       livereload: {
         options: {
@@ -264,6 +267,10 @@ module.exports = function (grunt) {
       ]
     },
     karma: {
+      e2e: {
+        configFile: 'karma-e2e.conf.js',
+        singleRun: true
+      },
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
@@ -301,7 +308,8 @@ module.exports = function (grunt) {
         }
       }
     },
-/*    jade: {
+/*    
+    jade: {
       compile: {
         options: {
           data: {
@@ -313,7 +321,8 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/views/main.html': '<%= yeoman.app %>/views/main.jade'
         }
       }
-    }*/
+    }
+*/
   });
 
   grunt.registerTask('server', function (target) {
@@ -330,12 +339,19 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('test', [
+  grunt.registerTask('test:unit', [
     'clean:server',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma'
+    'karma:unit'
+  ]);
+
+  grunt.registerTask('test:e2e', [
+    'clean:server',
+    'concurrent:test',
+    'autoprefixer',
+    'karma:e2e'
   ]);
 
   grunt.registerTask('build', [
@@ -358,7 +374,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'jshint',
-    'test',
+    'test:unit',
     'build'
   ]);
 };
