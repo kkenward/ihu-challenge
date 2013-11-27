@@ -136,9 +136,9 @@ module.exports = function (grunt) {
         }]
       }
     },
-    concat: {
-      dist: '<%= yeoman.dist %>'
-    },
+    /* concat: {
+      dist: {}
+    }, */
     rev: {
       dist: {
         files: {
@@ -201,14 +201,14 @@ module.exports = function (grunt) {
       dist: {
         options: {
           /*removeCommentsFromCDATA: true,
-          // https://github.com/yeoman/grunt-usemin/issues/44
-          //collapseWhitespace: true,
+          // https://github.com/yeoman/grunt-usemin/issues/44*/
+          collapseWhitespace: true,
           collapseBooleanAttributes: true,
           removeAttributeQuotes: true,
           removeRedundantAttributes: true,
           useShortDoctype: true,
           removeEmptyAttributes: true,
-          removeOptionalTags: true*/
+          removeOptionalTags: true
         },
         files: [{
           expand: true,
@@ -231,7 +231,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
-            'fonts/*'
+            'fonts/*', 'scripts/*'
           ]
         }, {
           expand: true,
@@ -247,6 +247,12 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      scripts: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/scripts',
+        dest: '.tmp/scripts/',
+        src: '{,*/}*.js'
       }
     },
     concurrent: {
@@ -261,6 +267,7 @@ module.exports = function (grunt) {
       dist: [
         'coffee',
         'copy:styles',
+        'copy:scripts',
         'imagemin',
         'svgmin',
         'htmlmin'
@@ -285,18 +292,18 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/scripts',
+          cwd: '.tmp/scripts',
           src: '*.js',
-          dest: '.tmp/concat/scripts'
+          dest: '.tmp/scripts'
         }]
       }
     },
     uglify: {
       dist: {
         files: {
-          '<%= yeoman.dist %>/scripts/*.js': [
-            '<%= yeoman.dist %>/scripts/*.js'
-          ]
+          '<%= yeoman.dist %>/scripts/app.js': '.tmp/scripts/app.js',
+          '<%= yeoman.dist %>/scripts/main.js': '.tmp/scripts/main.js',
+          '<%= yeoman.dist %>/scripts/bootstrap.js': '.tmp/scripts/bootstrap.js'
         }
       }
     },
@@ -362,14 +369,14 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     // not used since Uglify task does concat, but still available if needed
-    //'concat',
+    /*'concat',*/
     'ngmin',
     'copy:dist',
     'cdnify',
     'cssmin',
     'uglify',
-    'rev',
-    'usemin'
+    /*'rev',
+    'usemin'*/
   ]);
 
   grunt.registerTask('default', [
